@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>RLCS Editorial Prompt Tool</title>
+
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <main class="page-shell">
+    <header class="hero">
+      <p class="eyebrow">RLCS Editorial Prompt Tool</p>
+      <h1>Rocket League Article Prompt Creator</h1>
+      <p class="hero-text">
+        Create structured, SEO-friendly prompts for professional Rocket League esports articles, match reports, form checks and storylines.
+      </p>
+    </header>
+
+    <form id="promptForm" class="creator-form">
+      <section class="form-section">
+        <div class="section-header">
+          <span class="section-number">01</span>
+          <div>
+            <h2>Article Setup</h2>
+            <p>Choose the basic article format and target length.</p>
+          </div>
+        </div>
+
+        <div class="field-grid two-columns">
+          <div class="field">
+            <label for="articleType">Article Type</label>
+            <select id="articleType">
+              <option value="Match Report">Match Report</option>
+              <option value="Form Check">Form Check</option>
+              <option value="Player Profile">Player Profile</option>
+              <option value="Team Story">Team Story</option>
+              <option value="Storyline Article">Storyline Article</option>
+              <option value="Ranking Article">Ranking Article</option>
+              <option value="Beginner Guide">Beginner Guide</option>
+              <option value="Event Preview">Event Preview</option>
+              <option value="Event Recap">Event Recap</option>
+              <option value="Roster Change Analysis">Roster Change Analysis</option>
+              <option value="Custom">Custom</option>
+            </select>
+          </div>
+
+          <div class="field">
+            <label for="contentLength">Content Length</label>
+            <select id="contentLength">
+              <option value="Short">Short: 300–600 words</option>
+              <option value="Standard" selected>Standard: 700–1,200 words</option>
+              <option value="Detailed">Detailed: 1,200–1,900 words</option>
+              <option value="Deep Dive">Deep Dive: 1,900–3,000 words</option>
+              <option value="Custom">Custom</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="field custom-length-field hidden" id="customLengthWrap">
+          <label for="customWordCount">Custom Word Count</label>
+          <input
+            id="customWordCount"
+            type="text"
+            placeholder="Example: 1,450 words or 900–1,100 words"
+          />
+        </div>
+      </section>
+
+      <section class="form-section">
+        <div class="section-header">
+          <span class="section-number">02</span>
+          <div>
+            <h2>Topics and Story</h2>
+            <p>Use this large field for everything important about the match, story, teams, players and angle.</p>
+          </div>
+        </div>
+
+        <div class="field">
+          <label for="articleTopic">Main Article Notes</label>
+          <textarea
+            id="articleTopic"
+            class="large-textarea"
+            placeholder="Write everything important here: match result, storyline, teams, players, tournament context, what happened, why it matters, source notes, article angle, etc."
+          ></textarea>
+        </div>
+      </section>
+
+      <section class="form-section">
+        <div class="section-header">
+          <span class="section-number">03</span>
+          <div>
+            <h2>SEO & Audience</h2>
+            <p>Add keywords and define who the article is written for.</p>
+          </div>
+        </div>
+
+        <div class="field-grid two-columns">
+          <div class="field">
+            <label for="seoKeywords">SEO Keywords</label>
+            <textarea
+              id="seoKeywords"
+              placeholder="Insert Sistrix / SEO keywords here. The final prompt will tell the AI to use them naturally."
+            ></textarea>
+          </div>
+
+          <div class="field">
+            <label for="audienceLevel">Audience Level</label>
+            <select id="audienceLevel">
+              <option value="Beginner">Beginner</option>
+              <option value="Casual RLCS fan">Casual RLCS fan</option>
+              <option value="Regular RLCS viewer" selected>Regular RLCS viewer</option>
+              <option value="Advanced esports fan">Advanced esports fan</option>
+              <option value="Mixed audience">Mixed audience</option>
+            </select>
+          </div>
+        </div>
+      </section>
+
+      <section class="form-section">
+        <div class="section-header">
+          <span class="section-number">04</span>
+          <div>
+            <h2>Research & Sources</h2>
+            <p>Add source links and optional Reddit fan sentiment from the separate Reddit summary tool.</p>
+          </div>
+        </div>
+
+        <div class="reddit-box">
+          <div class="reddit-box-text">
+            <h3>Reddit Fan Summary</h3>
+            <p>
+              Open the separate Reddit prompt creator, summarize the fan discussion there and paste the result back into this field.
+            </p>
+          </div>
+
+          <a href="reddit-summary.html" class="reddit-link">
+            Open Reddit Fan Summary Tool
+          </a>
+        </div>
+
+        <div class="field">
+          <label for="redditSummary">Paste Reddit Fan Summary</label>
+          <textarea
+            id="redditSummary"
+            class="medium-textarea"
+            placeholder="Paste the Reddit fan sentiment summary here after using reddit-summary.html..."
+          ></textarea>
+        </div>
+
+        <div class="field">
+          <label for="liquipediaLinks">Liquipedia Link(s)</label>
+          <input
+            id="liquipediaLinks"
+            type="text"
+            placeholder="https://liquipedia.net/rocketleague/..."
+          />
+        </div>
+
+        <div class="field">
+          <label for="blastLink">BLAST.tv Link</label>
+          <input
+            id="blastLink"
+            type="text"
+            placeholder="https://blast.tv/..."
+          />
+        </div>
+
+        <div class="field">
+          <label for="ballchasingLink">Ballchasing.com Link</label>
+          <input
+            id="ballchasingLink"
+            type="text"
+            placeholder="https://ballchasing.com/..."
+          />
+        </div>
+
+        <div class="field">
+          <label for="jsonUrl">URL for JSON-LD</label>
+          <input
+            id="jsonUrl"
+            type="text"
+            placeholder="Final article URL or placeholder ARTICLE_URL"
+          />
+        </div>
+      </section>
+
+      <section class="action-section">
+        <button type="submit" class="btn primary-btn">Generate Prompt</button>
+        <button type="button" id="copyPrompt" class="btn secondary-btn">Copy Prompt</button>
+        <button type="button" id="downloadPrompt" class="btn secondary-btn">Download .txt</button>
+        <button type="button" id="resetForm" class="btn ghost-btn">Reset</button>
+      </section>
+
+      <p id="statusMessage" class="status-message"></p>
+
+      <section class="form-section output-section">
+        <div class="section-header">
+          <span class="section-number">05</span>
+          <div>
+            <h2>Generated Prompt</h2>
+            <p>The final prompt appears here. Copy it into ChatGPT, Claude, Codex or another AI system.</p>
+          </div>
+        </div>
+
+        <textarea
+          id="generatedPrompt"
+          class="output-field"
+          placeholder="The generated prompt will appear here..."
+          readonly
+        ></textarea>
+      </section>
+    </form>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>

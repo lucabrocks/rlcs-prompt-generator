@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>Rocket League Reddit Fan Summary Prompt Creator</title>
+
+  <link rel="stylesheet" href="reddit-summary.css" />
+</head>
+<body>
+  <main class="page">
+    <header class="hero">
+      <div>
+        <a href="index.html" class="back-link">← Back to Article Prompt Creator</a>
+        <p class="eyebrow">Rocket League Esports Tool</p>
+        <h1>Reddit Fan Summary Prompt Creator</h1>
+        <p class="hero-text">
+          Create a copy-ready AI prompt that summarizes fan sentiment from a Rocket League Esports Reddit discussion.
+        </p>
+      </div>
+    </header>
+
+    <section class="layout">
+      <form class="card form-card" id="redditForm">
+        <div class="section-title">
+          <h2>Reddit Discussion Input</h2>
+          <p>Add the Reddit thread and optional context. The generated prompt will tell the AI how to summarize the fan discussion safely.</p>
+        </div>
+
+        <div class="field">
+          <label for="redditUrl">Reddit Discussion Link <span>*</span></label>
+          <input
+            type="url"
+            id="redditUrl"
+            placeholder="https://www.reddit.com/r/RocketLeagueEsports/..."
+            required
+          />
+          <small>Use the thread URL from r/RocketLeagueEsports or another relevant Rocket League discussion.</small>
+          <p class="error-message" id="redditUrlError"></p>
+        </div>
+
+        <div class="field">
+          <label for="topic">Match / Event / Topic</label>
+          <input
+            type="text"
+            id="topic"
+            placeholder="Example: Karmine Corp vs Vitality at the RLCS Major"
+          />
+        </div>
+
+        <div class="field">
+          <label for="entities">Teams / Players to watch</label>
+          <textarea
+            id="entities"
+            rows="3"
+            placeholder="Example: Karmine Corp, Vitality, zen, Vatira, ExoTiiK..."
+          ></textarea>
+        </div>
+
+        <div class="grid-2">
+          <div class="field">
+            <label for="summaryDepth">Summary Depth</label>
+            <select id="summaryDepth">
+              <option value="Short">Short</option>
+              <option value="Standard" selected>Standard</option>
+              <option value="Detailed">Detailed</option>
+            </select>
+          </div>
+
+          <div class="field">
+            <label for="outputStyle">Output Style</label>
+            <select id="outputStyle">
+              <option value="Editorial Notes" selected>Editorial Notes</option>
+              <option value="Article-Ready Summary">Article-Ready Summary</option>
+              <option value="Bullet Point Analysis">Bullet Point Analysis</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="field">
+          <label for="focusAreas">Focus Areas</label>
+          <div class="checkbox-grid">
+            <label>
+              <input type="checkbox" name="focusAreas" value="Overall fan mood" checked />
+              Overall fan mood
+            </label>
+            <label>
+              <input type="checkbox" name="focusAreas" value="Match entertainment value" checked />
+              Match entertainment value
+            </label>
+            <label>
+              <input type="checkbox" name="focusAreas" value="Player reactions" checked />
+              Player reactions
+            </label>
+            <label>
+              <input type="checkbox" name="focusAreas" value="Team reactions" checked />
+              Team reactions
+            </label>
+            <label>
+              <input type="checkbox" name="focusAreas" value="Turning points" />
+              Turning points
+            </label>
+            <label>
+              <input type="checkbox" name="focusAreas" value="Memes and recurring jokes" />
+              Memes and recurring jokes
+            </label>
+            <label>
+              <input type="checkbox" name="focusAreas" value="Controversial or divided opinions" checked />
+              Divided opinions
+            </label>
+            <label>
+              <input type="checkbox" name="focusAreas" value="Storylines for an article" checked />
+              Article storylines
+            </label>
+          </div>
+        </div>
+
+        <div class="field">
+          <label for="pastedComments">Optional: Pasted Reddit Comments</label>
+          <textarea
+            id="pastedComments"
+            rows="9"
+            placeholder="Optional: Paste Reddit comments here if the AI system cannot access the Reddit link directly."
+          ></textarea>
+          <small>
+            This is useful if Claude, ChatGPT or another AI tool cannot open the Reddit thread. You can paste copied comments here.
+          </small>
+        </div>
+
+        <div class="field">
+          <label for="additionalNotes">Additional Notes</label>
+          <textarea
+            id="additionalNotes"
+            rows="4"
+            placeholder="Example: Focus especially on whether fans thought the match was close, boring, chaotic or decided by one player."
+          ></textarea>
+        </div>
+
+        <div class="button-row">
+          <button type="submit" class="btn primary">Generate Prompt</button>
+          <button type="button" class="btn secondary" id="copyBtn">Copy Prompt</button>
+          <button type="button" class="btn secondary" id="downloadBtn">Download .txt</button>
+          <button type="button" class="btn danger" id="resetBtn">Reset</button>
+        </div>
+
+        <p class="success-message" id="successMessage"></p>
+      </form>
+
+      <section class="card output-card">
+        <div class="section-title">
+          <h2>Generated Prompt</h2>
+          <p>Copy this prompt into an AI system to create a clean Reddit fan sentiment summary.</p>
+        </div>
+
+        <textarea
+          id="generatedPrompt"
+          class="output"
+          placeholder="Your generated Reddit fan summary prompt will appear here..."
+          readonly
+        ></textarea>
+      </section>
+    </section>
+  </main>
+
+  <script src="reddit-summary.js"></script>
+</body>
+</html>
