@@ -1,18 +1,19 @@
 :root {
-  --bg: #070b12;
-  --bg-soft: #0e1522;
-  --card: #111b2b;
-  --card-light: #162338;
-  --text: #f5f7fb;
-  --muted: #9ba8bd;
-  --line: rgba(255, 255, 255, 0.12);
-  --blue: #2f80ff;
-  --blue-dark: #1d5fd1;
-  --orange: #ff8a2a;
-  --red: #ff4d4d;
-  --green: #36d399;
-  --radius: 18px;
-  --shadow: 0 24px 70px rgba(0, 0, 0, 0.35);
+  --orange: #FF8142;
+  --orange-light: #FFEDE4;
+  --orange-dark: #E6703A;
+
+  --ink: #160B0A;
+  --gray-soft: #3D3230;
+  --gray-muted: #65665F;
+  --white: #FFFFFF;
+
+  --secondary-bg: #F6F4F1;
+  --tertiary-bg: #FAFAF7;
+  --border: #ECEAE0;
+
+  --radius: 6px;
+  --radius-sm: 3px;
 }
 
 * {
@@ -21,87 +22,95 @@
 
 body {
   margin: 0;
-  font-family: Arial, Helvetica, sans-serif;
-  background:
-    radial-gradient(circle at top left, rgba(47, 128, 255, 0.22), transparent 32%),
-    radial-gradient(circle at top right, rgba(255, 138, 42, 0.16), transparent 28%),
-    var(--bg);
-  color: var(--text);
+  background: var(--tertiary-bg);
+  color: var(--ink);
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 17px;
+  line-height: 1.65;
 }
 
 .page {
-  width: min(1400px, calc(100% - 32px));
+  width: min(1400px, calc(100% - 48px));
   margin: 0 auto;
-  padding: 32px 0 48px;
+  padding: 48px 0 64px;
 }
 
+/* ─── Hero ─────────────────────────────────────────────── */
+
 .hero {
-  padding: 34px;
-  border: 1px solid var(--line);
-  border-radius: 28px;
-  background: linear-gradient(135deg, rgba(17, 27, 43, 0.96), rgba(14, 21, 34, 0.9));
-  box-shadow: var(--shadow);
-  margin-bottom: 28px;
+  padding-bottom: 40px;
+  margin-bottom: 40px;
+  border-bottom: 1px solid var(--border);
 }
 
 .back-link {
   display: inline-block;
-  margin-bottom: 22px;
-  color: var(--muted);
+  margin-bottom: 20px;
+  font-family: "SFMono-Regular", Consolas, "Liberation Mono", monospace;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--gray-muted);
   text-decoration: none;
-  font-size: 0.95rem;
 }
 
 .back-link:hover {
-  color: var(--text);
+  color: var(--orange);
 }
 
 .eyebrow {
-  margin: 0 0 10px;
-  color: var(--orange);
-  text-transform: uppercase;
+  margin: 0 0 14px;
+  font-family: "SFMono-Regular", Consolas, "Liberation Mono", monospace;
+  font-size: 11px;
+  font-weight: 600;
   letter-spacing: 0.12em;
-  font-size: 0.78rem;
-  font-weight: 700;
+  text-transform: uppercase;
+  color: var(--orange-dark);
 }
 
 h1,
 h2 {
   margin: 0;
+  font-family: Arial, Helvetica, sans-serif;
 }
 
 h1 {
   max-width: 850px;
-  font-size: clamp(2.2rem, 5vw, 4.8rem);
-  line-height: 0.98;
-  letter-spacing: -0.05em;
+  font-size: clamp(2rem, 5vw, 4rem);
+  line-height: 0.96;
+  letter-spacing: -0.03em;
+  font-weight: 900;
+  color: var(--ink);
 }
 
 .hero-text {
-  max-width: 760px;
+  max-width: 640px;
   margin: 20px 0 0;
-  color: var(--muted);
-  font-size: 1.12rem;
-  line-height: 1.65;
+  color: var(--gray-muted);
+  font-size: 1rem;
 }
+
+/* ─── Layout ────────────────────────────────────────────── */
 
 .layout {
   display: grid;
-  grid-template-columns: minmax(0, 1fr) minmax(420px, 0.85fr);
+  grid-template-columns: minmax(0, 1fr) minmax(380px, 0.8fr);
   gap: 24px;
   align-items: start;
 }
 
+/* ─── Cards ─────────────────────────────────────────────── */
+
 .card {
-  border: 1px solid var(--line);
+  border: 1px solid var(--border);
   border-radius: var(--radius);
-  background: rgba(17, 27, 43, 0.92);
-  box-shadow: var(--shadow);
+  background: var(--white);
 }
 
 .form-card,
 .output-card {
-  padding: 26px;
+  padding: 28px 32px;
 }
 
 .output-card {
@@ -110,19 +119,26 @@ h1 {
 }
 
 .section-title {
+  padding-bottom: 20px;
   margin-bottom: 24px;
+  border-bottom: 1px solid var(--border);
 }
 
 .section-title h2 {
   font-size: 1.3rem;
-  margin-bottom: 8px;
+  font-weight: 900;
+  letter-spacing: -0.02em;
+  margin-bottom: 6px;
 }
 
 .section-title p {
   margin: 0;
-  color: var(--muted);
-  line-height: 1.5;
+  color: var(--gray-muted);
+  font-size: 0.875rem;
+  line-height: 1.55;
 }
+
+/* ─── Fields ────────────────────────────────────────────── */
 
 .field {
   margin-bottom: 20px;
@@ -130,9 +146,13 @@ h1 {
 
 label {
   display: block;
-  margin-bottom: 8px;
-  font-weight: 700;
-  color: var(--text);
+  margin-bottom: 6px;
+  font-family: "SFMono-Regular", Consolas, "Liberation Mono", monospace;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--gray-soft);
 }
 
 label span {
@@ -143,34 +163,34 @@ input,
 select,
 textarea {
   width: 100%;
-  border: 1px solid var(--line);
-  border-radius: 14px;
-  background: var(--bg-soft);
-  color: var(--text);
-  padding: 13px 14px;
-  font: inherit;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  background: var(--white);
+  color: var(--ink);
+  padding: 11px 13px;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 0.95rem;
   outline: none;
-  transition: border-color 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+  transition: border-color 0.15s ease;
 }
 
 textarea {
   resize: vertical;
-  min-height: 92px;
+  min-height: 88px;
 }
 
 input:focus,
 select:focus,
 textarea:focus {
-  border-color: rgba(47, 128, 255, 0.8);
-  box-shadow: 0 0 0 4px rgba(47, 128, 255, 0.16);
-  background: #101a2a;
+  border-color: var(--orange);
 }
 
 small {
   display: block;
-  margin-top: 7px;
-  color: var(--muted);
-  line-height: 1.45;
+  margin-top: 6px;
+  color: var(--gray-muted);
+  font-size: 0.82rem;
+  line-height: 1.5;
 }
 
 .grid-2 {
@@ -179,96 +199,147 @@ small {
   gap: 16px;
 }
 
+/* ─── Checkboxes ────────────────────────────────────────── */
+
 .checkbox-grid {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 10px;
+  gap: 8px;
 }
 
 .checkbox-grid label {
   display: flex;
   align-items: flex-start;
-  gap: 10px;
+  gap: 8px;
   margin: 0;
-  padding: 12px;
-  border: 1px solid var(--line);
-  border-radius: 14px;
-  background: rgba(14, 21, 34, 0.72);
-  color: var(--muted);
-  font-weight: 500;
-  line-height: 1.35;
+  padding: 10px 12px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  background: var(--tertiary-bg);
+  font-family: "SFMono-Regular", Consolas, "Liberation Mono", monospace;
+  font-size: 10px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--gray-soft);
+  cursor: pointer;
+  transition: border-color 0.15s ease, background 0.15s ease;
 }
 
-.checkbox-grid input {
-  width: auto;
-  margin-top: 2px;
-  accent-color: var(--blue);
+.checkbox-grid label:hover {
+  border-color: var(--orange);
+  background: var(--white);
 }
+
+.checkbox-grid input[type="checkbox"] {
+  flex: 0 0 auto;
+  width: auto;
+  margin-top: 1px;
+  padding: 0;
+  border: none;
+  border-radius: 0;
+  background: none;
+  accent-color: var(--orange);
+}
+
+.checkbox-grid input[type="checkbox"]:focus {
+  border-color: transparent;
+}
+
+/* ─── Buttons ───────────────────────────────────────────── */
 
 .button-row {
   display: flex;
   flex-wrap: wrap;
-  gap: 10px;
-  margin-top: 26px;
+  gap: 8px;
+  margin-top: 24px;
 }
 
 .btn {
-  border: 0;
-  border-radius: 14px;
-  padding: 13px 16px;
-  color: var(--text);
-  font-weight: 800;
+  border: 1px solid transparent;
+  border-radius: var(--radius-sm);
+  padding: 10px 20px;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 0.875rem;
+  font-weight: 700;
   cursor: pointer;
-  transition: transform 0.15s ease, opacity 0.15s ease, background 0.15s ease;
-}
-
-.btn:hover {
-  transform: translateY(-1px);
-}
-
-.btn:active {
-  transform: translateY(0);
+  transition: background 0.15s ease, color 0.15s ease, border-color 0.15s ease;
 }
 
 .primary {
-  background: linear-gradient(135deg, var(--blue), var(--blue-dark));
+  background: var(--orange);
+  color: var(--white);
+  border-color: var(--orange);
+}
+
+.primary:hover {
+  background: var(--orange-dark);
+  border-color: var(--orange-dark);
 }
 
 .secondary {
-  background: var(--card-light);
+  background: transparent;
+  color: var(--orange);
+  border-color: var(--orange);
 }
 
 .secondary:hover {
-  background: #1d2d47;
+  background: var(--orange);
+  color: var(--white);
 }
 
 .danger {
-  background: rgba(255, 77, 77, 0.15);
-  color: #ffb3b3;
+  background: transparent;
+  color: var(--gray-muted);
+  border-color: var(--border);
 }
 
 .danger:hover {
-  background: rgba(255, 77, 77, 0.24);
+  background: var(--secondary-bg);
+  color: var(--ink);
+  border-color: var(--gray-muted);
 }
 
+/* ─── Output ────────────────────────────────────────────── */
+
 .output {
-  min-height: 720px;
-  line-height: 1.55;
+  min-height: 660px;
   white-space: pre-wrap;
+  line-height: 1.6;
+  background: var(--ink);
+  color: #E8E4DF;
+  border-color: var(--ink);
+  border-radius: var(--radius-sm);
+  font-family: "SFMono-Regular", Consolas, "Liberation Mono", monospace;
+  font-size: 0.875rem;
 }
+
+.output:focus {
+  background: var(--ink);
+  color: #E8E4DF;
+  border-color: var(--orange);
+}
+
+/* ─── Messages ──────────────────────────────────────────── */
 
 .success-message {
   margin: 16px 0 0;
-  color: var(--green);
-  font-weight: 700;
+  font-family: "SFMono-Regular", Consolas, "Liberation Mono", monospace;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  color: var(--orange-dark);
 }
 
 .error-message {
-  margin: 8px 0 0;
-  color: var(--red);
-  font-size: 0.92rem;
-  font-weight: 700;
+  margin: 6px 0 0;
+  font-family: "SFMono-Regular", Consolas, "Liberation Mono", monospace;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  color: #C0392B;
 }
+
+/* ─── Responsive ────────────────────────────────────────── */
 
 @media (max-width: 1050px) {
   .layout {
@@ -280,20 +351,25 @@ small {
   }
 
   .output {
-    min-height: 520px;
+    min-height: 460px;
   }
 }
 
 @media (max-width: 650px) {
   .page {
-    width: min(100% - 20px, 1400px);
-    padding-top: 18px;
+    width: min(100% - 24px, 1400px);
+    padding-top: 24px;
+    padding-bottom: 48px;
   }
 
-  .hero,
+  .hero {
+    padding-bottom: 28px;
+    margin-bottom: 28px;
+  }
+
   .form-card,
   .output-card {
-    padding: 20px;
+    padding: 20px 16px;
   }
 
   .grid-2,
