@@ -242,15 +242,15 @@ Use Liquipedia for:
 - historical results
 - general competitive context
 
-2. BLAST.tv Rocket League
-Use BLAST for:
-- current RLCS information
-- match pages
-- player statistics
-- team statistics
-- rankings
-- event information
-- specific statistical claims
+Do not write phrases like "According to Liquipedia", "Liquipedia lists" or "Liquipedia shows".
+This information is common public knowledge within the Rocket League esports community and must be written as established fact, not cited as a source.
+
+2. BLAST.tv Rocket League and Ballchasing.com
+Use BLAST and Ballchasing for background research and context only.
+They give you an impression of how a match, team or player performed — similar to the Reddit summary.
+Do not attribute statistics to these platforms by name in the article.
+Do not write "According to BLAST", "BLAST statistics show", "Ballchasing data suggests" or similar phrases.
+Use the data to inform your understanding, not to produce sourced stat passages.
 
 3. Reddit Fan Summary
 Use the Reddit fan summary only as fan sentiment and community interpretation.
@@ -260,14 +260,12 @@ Do not name Reddit users.
 Do not invent fan reactions.
 Only use Reddit sentiment if the summary clearly describes repeated patterns.
 If the Reddit reaction is mixed, present it as mixed.
+Do not add a disclaimer sentence or paragraph stating that a section represents community opinion or unverified fan sentiment. Integrate community context naturally into the text without labelling it.
 
 4. RocketLeague.com
 Use for official RLCS information, formats, schedules, announcements and tournament context.
 
-5. Ballchasing.com
-Use for replay-based statistics only when it genuinely adds value.
-
-6. ShiftRLE
+5. ShiftRLE
 Use for roster moves, transfer news, scene updates and interviews.
 
 ==================================================
@@ -299,11 +297,6 @@ If information is missing, include:
 
 Never fill factual gaps with guesses.
 
-When using specific statistics, mention the source naturally in the text.
-Examples:
-- “According to BLAST’s player statistics…”
-- “Ballchasing replay data suggests…”
-
 ==================================================
 SEO RULES
 ==================================================
@@ -312,7 +305,7 @@ The article must be SEO-friendly while still sounding natural and editorial.
 
 Use the provided SEO keywords naturally:
 - in the H1 if possible
-- in at least one H2 if natural
+- in at least one H2 — this is required, not optional
 - in the introduction
 - in the body text where relevant
 - in the meta title
@@ -322,7 +315,9 @@ Use the provided SEO keywords naturally:
 Do not keyword-stuff.
 Use semantic variations.
 Use one clear H1.
-Use clean H2 sections.
+Use H2 headings that are specific, contextual and SEO-informed — not generic section labels.
+Each H2 must reflect the actual argument or angle of that section.
+Avoid static, interchangeable headings like "Why X matters" unless it genuinely fits and adds meaning.
 Use H3 only where helpful.
 Use short paragraphs.
 Write a strong intro.
@@ -332,6 +327,11 @@ Answer the reader’s likely search intent early.
 ==================================================
 ARTICLE STRUCTURE
 ==================================================
+
+H2 headings in the structure below are starting points, not fixed labels.
+Adapt every H2 to reflect the specific content of the article.
+Make H2s contextual, specific and — where natural — SEO-relevant.
+Replace generic headings like "Why X matters" with headings that describe what actually happens in that section.
 
 ${getArticleStructure(articleType.value)}
 ==================================================
@@ -384,6 +384,10 @@ FINAL INSTRUCTIONS
 - Use clear, confident, story-driven tone
 - Ensure HTML is clean and semantic
 - Ensure JSON-LD is syntactically valid
+- Do not add a concluding sentence that is vague, generic or lacks substance — end on a meaningful statement or do not add a final sentence at all
+- Do not write "According to Liquipedia", "Liquipedia lists" or any attribution to Liquipedia in the article text
+- Do not add disclaimer sentences about community opinions being unverified — integrate that context naturally
+- H2 headings must be specific and contextual; avoid generic labels that could apply to any article
 
 Now generate the article based on the provided input.`;
 }
