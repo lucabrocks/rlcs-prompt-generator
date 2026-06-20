@@ -170,7 +170,7 @@ Still follow SEO, factual accuracy, clean HTML and professional editorial rules.
 }
 
 function buildPrompt() {
-  return `You are a professional English-language Rocket League esports writer, SEO editor and content strategist.
+  return `You are a professional English-language Rocket League esports writer and SEO editor.
 
 Your task is to create a high-quality article for a professional Rocket League esports website.
 
@@ -334,257 +334,56 @@ ARTICLE STRUCTURE
 ==================================================
 
 ${getArticleStructure(articleType.value)}
-
 ==================================================
-OUTPUT FORMAT
-==================================================
-
-Return the final output in this order:
-
-1. Content Brief
-Briefly summarize:
-- article type
-- target category
-- target topic hub if relevant
-- main search intent
-- target audience
-- recommended angle
-- estimated word count
-
-2. H1 / Headline Variants
-Provide 5 H1 headline variants.
-Make them SEO-friendly but natural.
-Mark one as “Recommended H1”.
-
-3. SEO Metadata
-Provide:
-- SEO Title, max. 60 characters if possible
-- Meta Description, max. 155–160 characters if possible
-- URL Slug
-- Primary Keyword
-- Secondary Keywords
-- Suggested Tags
-- Suggested Category
-- Suggested Topic Hub if relevant
-
-4. HTML Article
-Write the full article in clean semantic HTML.
-
-HTML rules:
-- Use <article>
-- Use exactly one <h1>
-- Use <h2> for main sections
-- Use <h3> only when useful
-- Use <p> for paragraphs
-- Use <ul> and <li> only when it improves readability
-- Do not use inline CSS
-- Do not use external links inside the article body unless specifically required
-- Do not use tables unless the article type clearly benefits from one
-- Keep paragraphs readable and not too long
-- Write naturally in English
-- Make the article feel like professional esports journalism
-
-5. JSON-LD Structured Data
-Provide valid JSON-LD using Schema.org Article schema.
-
-Include:
-- @context
-- @type
-- headline
-- description
-- author
-- publisher
-- datePublished
-- dateModified
-- mainEntityOfPage
-- keywords
-- articleSection
-- inLanguage
-
-Use placeholder values where unknown:
-- WEBSITE_NAME
-- WEBSITE_URL
-- AUTHOR_NAME
-- LOGO_URL
-- ARTICLE_URL
-- YYYY-MM-DD
-
-6. Source Notes
-List the sources that should be checked or were used conceptually:
-- Liquipedia
-- BLAST.tv
-- Reddit fan summary if provided
-- RocketLeague.com if relevant
-- Ballchasing if relevant
-- ShiftRLE if relevant
-- Other sources if relevant
-
-For each source, briefly explain what it was used for.
-
-7. Information Needed Before Publication
-If any factual information could not be verified, list it clearly.
-If everything is sufficiently supported, write:
-“No major factual gaps identified, but final publication should still include a manual source check.”
-
-8. Internal Linking Suggestions
-Suggest internal links to existing or future website pages.
-For each link, explain why it is useful.
-
-9. Optional Follow-Up Content Ideas
-Suggest 3–5 related article ideas that would strengthen the topic cluster.
-
-==================================================
-STYLE RULES
+OUTPUT FORMAT – EXCLUSIVELY 3 CODE BLOCKS
 ==================================================
 
-Write in professional English.
+Output exactly 3 code blocks in this order, with no additional text before or after:
 
-The tone should be:
-- clear
-- confident
-- editorial
-- analytical
-- story-driven
-- accessible
-- not overly casual
-- not overly academic
-- not exaggerated or clickbait-heavy
+1. HTML ARTICLE (code block: \`\`\`html)
+   - Wrap in <article>
+   - Use exactly one <h1>
+   - Use <h2> for sections, <h3> if needed
+   - Use <p> for paragraphs, <ul>/<li> only if it improves readability
+   - No inline styles, no external links, no comments
 
-Avoid:
-- empty hype phrases
-- generic claims
-- unsupported statements
-- fake certainty
-- overuse of statistics
-- copying source wording
-- keyword stuffing
-- long direct quotes
-- Reddit quotes
-- invented fan reactions
-- invented statistics
-- invented results
+2. METADATA (code block: \`\`\`)
+   Title: [factual, concise, max 60 characters]
+   Description: [clear, max 160 characters]
+   Keywords: [3–5 terms separated by commas]
 
-Prefer:
-- strong but accurate headlines
-- clear explanations
-- short paragraphs
-- context before opinion
-- storytelling backed by facts
-- careful wording when uncertain
-- “why it matters” framing
-- natural SEO integration
-- fan sentiment only when clearly supported
+3. JSON-LD (code block: \`\`\`html)
+   <script type="application/ld+json">
+   {
+     "@context": "https://schema.org",
+     "@type": "Article",
+     "headline": "[from <h1>]",
+     "description": "[from metadata]",
+     "author": { "@type": "Organization", "name": "Backboard RL" },
+     "publisher": { "@type": "Organization", "name": "Backboard RL" },
+     "datePublished": "2026-06-20",
+     "url": "URL PLACEHOLDER",
+     "mainEntityOfPage": { "@type": "WebPage", "@id": "URL PLACEHOLDER" },
+     "keywords": "[from metadata keywords]"
+   }
+   </script>
 
 ==================================================
-FINAL QUALITY CHECK
+FINAL INSTRUCTIONS
 ==================================================
 
-Before giving the final answer, check:
-- Is the article type structure appropriate?
-- Is the article written in English?
-- Is the HTML clean and usable?
-- Is there exactly one H1?
-- Are SEO keywords integrated naturally?
-- Is the intro strong and relevant?
-- Does the article explain why the topic matters?
-- Are factual claims cautious and verifiable?
-- Are specific statistics sourced?
-- Is Reddit only used as summarized fan sentiment if provided?
-- Are no Reddit users quoted or named?
-- Are there no invented facts?
-- Are metadata and JSON-LD included?
-- Are internal linking suggestions included?
-- Are remaining factual gaps clearly listed?
-
-==================================================
-FINAL NATURAL-LANGUAGE QUALITY PASS
-==================================================
-
-Before returning the final text, revise the complete draft once more. Preserve the intended meaning, all verified facts, the requested tone, the target audience, the language variant and any required format. Do not add unsupported claims, invented references or fabricated details.
-
-The final result should read like a carefully edited text written for this specific purpose, not like an unreviewed template.
-
-1. Improve sentence rhythm
-
-* Use a natural mix of short, medium-length and longer sentences.
-* Remove repetitive sentence patterns and unnecessary explanatory clauses.
-* Avoid making every sentence equally polished, equally long or structurally identical.
-* Do not deliberately insert spelling or grammar mistakes. Create natural variation through rhythm and phrasing instead.
-
-2. Improve paragraph flow
-
-* Vary paragraph length according to the content.
-* Connect related ideas with meaningful transitions.
-* Do not isolate every thought in a separate, self-contained block.
-* Allow ideas to develop instead of closing each paragraph with a mechanical summary.
-
-3. Remove unnecessary overstructuring
-
-* Do not default to numbered sections, identical subsections or lists with exactly three items.
-* Use bullet points only when they genuinely improve readability.
-* Convert artificial list structures into prose where appropriate.
-* Avoid repetitive headings, excessive title-style capitalization, unnecessary colons, excessive bold formatting, emojis and decorative dividers unless the requested format requires them.
-* Do not repeat the task in the introduction or restate the complete text in a long conclusion.
-
-4. Use specific, concrete language
-
-* Replace vague generalizations with supported details from the available material.
-* Explain why a point matters in the specific context.
-* Prefer precise nouns and direct verbs over abstract claims about importance, complexity or impact.
-* Use examples, names, facts and figures when they are available and relevant.
-* Do not invent anecdotes, statistics or contextual details.
-
-5. Avoid generic promotional language
-
-* Remove exaggerated promises and empty marketing phrases.
-* Review words and phrases such as: delve into, underscore, pivotal, multifaceted, foster, crucial, transformative, utilise, revolutionize, innovative, cutting-edge, game-changing and seamless integration.
-* Do not delete these terms automatically. Replace them when a simpler or more specific expression communicates the point more clearly.
-* Avoid inflated claims about significance, legacy, symbolism or future potential unless they are supported by the content.
-
-6. Reduce formulaic phrasing
-
-* Avoid repetitive transitions that mechanically announce a contrast, summary or broader perspective.
-* Avoid repeated hedging that weakens straightforward statements.
-* Limit rhetorical patterns such as repeated three-part lists and frequent “not only ... but also” constructions.
-* Do not end every section by summarizing the point that was just made.
-
-7. Match the audience and channel
-
-* Use the requested language variant consistently.
-* Adjust terminology to the reader’s expected level of knowledge.
-* Define abbreviations only when the explanation is genuinely useful.
-* Remove unnecessarily technical vocabulary and overly formal wording when simpler language is more suitable.
-* Keep the tone appropriate to the text type: factual, editorial, professional, conversational or promotional as requested.
-
-8. Use punctuation naturally
-
-* Use dashes sparingly and only when they improve the sentence.
-* Replace repeated dashes with full stops, commas or subordinate clauses where this improves readability.
-* Review the text as a whole instead of optimizing each sentence in isolation.
-
-9. Check logic and factual integrity
-
-* Ensure that connected statements actually belong together logically.
-* Remove contextual mismatches that sound plausible but do not make sense.
-* Verify that every cited source exists and supports the associated claim.
-* Clearly mark direct quotations.
-* Remove unsupported claims rather than filling information gaps with plausible assumptions.
-
-10. Remove chatbot and copy-and-paste artifacts
-
-* Delete meta-comments, drafting notes, placeholders, knowledge-limit disclaimers and offers to provide more information.
-* Remove email-style greetings or sign-offs when the requested format does not require them.
-* Strip unnecessary Markdown remnants and formatting artifacts.
-* Check for accidental spaces at the beginning of paragraphs.
-
-11. Perform a consistency check
-
-* Read the final text as one document.
-* Ensure that the voice, level of formality and writing quality remain consistent throughout.
-* Remove abrupt changes in tone, register or sentence style.
-* Keep the text natural, direct and specific without making it artificially casual.
-
-Return only the fully revised final text. Do not describe the editing process and do not mention this quality pass.
+- Write professionally in British English
+- Use normal, everyday British English phrasing
+- Avoid words or idioms that strongly suggest Indian or Australian English
+- Each sentence must make a meaningful statement; avoid filler sentences
+- Do not use unnecessary repetition; do not repeat ideas unless it is essential
+- Do not use semicolons or em dashes
+- Avoid the typical AI phrase pattern "It is not only X, but Y"
+- Integrate SEO keywords naturally
+- Do not invent facts, statistics, or sources
+- Use clear, confident, story-driven tone
+- Ensure HTML is clean and semantic
+- Ensure JSON-LD is syntactically valid
 
 Now generate the article based on the provided input.`;
 }
