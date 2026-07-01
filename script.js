@@ -169,6 +169,63 @@ Still follow SEO, factual accuracy, clean HTML and professional editorial rules.
   return structures[type] || structures.Custom;
 }
 
+function getJsonLdSection() {
+  const jsonLdUrl = jsonUrl.value.trim() || "URL_PLACEHOLDER";
+
+  return `
+---
+## REQUIRED OUTPUT: JSON-LD STRUCTURED DATA
+
+After the article and meta fields, output the following JSON-LD as a separate code block. 
+Fill in every PLACEHOLDER. Do not change the structure. Keep "inLanguage": "en".
+
+Article schema (ALWAYS include):
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "ARTICLE_HEADLINE",
+  "description": "META_DESCRIPTION",
+  "author": {
+    "@type": "Organization",
+    "name": "Backboard RL",
+    "url": "https://WEBSITE_DOMAIN/"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Backboard RL",
+    "url": "https://WEBSITE_DOMAIN/",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://WEBSITE_DOMAIN/PFAD_ZUM_LOGO.png"
+    }
+  },
+  "datePublished": "YYYY-MM-DD",
+  "dateModified": "YYYY-MM-DD",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "${jsonLdUrl}"
+  },
+  "url": "${jsonLdUrl}",
+  "keywords": [
+    "KEYWORD_1",
+    "KEYWORD_2",
+    "KEYWORD_3"
+  ],
+  "articleSection": "ARTICLE_SECTION",
+  "inLanguage": "en"
+}
+</script>
+
+FAQPage schema (include ONLY if the article contains a visible FAQ section):
+Append a second JSON-LD block of @type "FAQPage". Each question becomes a Question node, 
+each answer an Answer node. Question text and answer text MUST match the visible HTML 
+word-for-word — do not paraphrase or shorten. If the article has no visible FAQ section, 
+omit this block entirely.
+---`;
+}
+
 function buildPrompt() {
   return `You are a professional English-language Rocket League esports writer and SEO editor.
 
@@ -390,6 +447,8 @@ FINAL INSTRUCTIONS
 - H2 headings must be specific and contextual; avoid generic labels that could apply to any article
 
 Now generate the article based on the provided input.`;
+  ${getJsonLdSection()}
+`;
 }
 
 function saveState() {
